@@ -1,0 +1,2 @@
+﻿model,test_size,relation_accuracy,evidence_match_accuracy,notes
+AREEj without fine-tuning,50,0.0,0.1,Preliminary no-fine-tuning evaluation on draft Arabic PEP test set
