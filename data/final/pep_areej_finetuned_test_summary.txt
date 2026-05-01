@@ -1,0 +1,97 @@
+==============================
+FINE-TUNED AREEj TEST EVALUATION
+==============================
+
+Input: data\final\pep_areej_finetuned_test_predictions.csv
+Output: data\final\pep_areej_finetuned_test_evaluated.csv
+Total test rows: 30
+
+Metrics
+-------
+total_rows: 30
+subject_match: 0.8000
+object_match: 0.7000
+relation_match: 0.8333
+evidence_exact_or_contains_match: 0.8667
+
+Relation predictions distribution
+---------------------------------
+position held: 25
+محمد رفيع<per> position held: 1
+يوسف المطيري المتحدث باسم وزاره الشوون الاجتماعيه<per> position held: 1
+located in the administrative territorial entity: 1
+(empty): 1
+مبارك عبدالله علي صنيدح العجمي<per> chairperson: 1
+
+Sample predictions
+------------------
+
+ID: 22
+Sentence: سعد الخراز هو وزير الشؤون الجديد.
+Gold: <bor> سعد الخراز <per> وزير الشؤون الجديد <concept> position held <rt> هو وزير الشؤون الجديد <e>
+Prediction: </s>ar_AR<bor> سعد الخراز<per> وزير الشؤون الجديد<concept> position held<rt> هو وزير الشؤون الجديد<e></s><pad><pad><pad><pad><pad><pad>
+Parsed prediction: سعد الخراز | position held | وزير الشؤون الجديد | evidence=هو وزير الشؤون الجديد
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 27
+Sentence: كان محمد صقر المعوشرجي أول وزير للأوقاف بعد الاحتلال العراقي.
+Gold: <bor> محمد صقر المعوشرجي <per> وزير للأوقاف <concept> position held <rt> كان أول وزير للأوقاف <e>
+Prediction: </s>ar_AR<bor> محمد صقر المعوشرجي<per> وزير للأوقاف<concept> position held<rt> أول وزير للأوقاف<e></s>
+Parsed prediction: محمد صقر المعوشرجي | position held | وزير للأوقاف | evidence=أول وزير للأوقاف
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 34
+Sentence: المهندس جراح المطيري هو نايب المدير العام.
+Gold: <bor> جراح المطيري <per> نايب المدير العام <concept> position held <rt> هو نايب المدير العام <e>
+Prediction: </s>ar_AR<bor> جراح المطيري<per> المدير العام<concept> position held<rt> هو نايب المدير العام<e></s><pad><pad><pad><pad><pad><pad>
+Parsed prediction: جراح المطيري | position held | المدير العام | evidence=هو نايب المدير العام
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 42
+Sentence: علي ثنيان صالح الأذينة سياسي.
+Gold: <bor> علي ثنيان صالح الأذينة <per> سياسي <concept> position held <rt> سياسي <e>
+Prediction: </s>ar_AR<bor> علي ثنيان صالح الأذينة<per> سياسي<concept> position held<rt> سياسي<e></s><pad><pad><pad><pad><pad><pad>
+Parsed prediction: علي ثنيان صالح الأذينة | position held | سياسي | evidence=سياسي
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 48
+Sentence: الشيخ ثامر علي صباح السالم الصباح وزير الداخليه.
+Gold: <bor> الشيخ ثامر علي صباح السالم الصباح <per> وزير الداخليه <concept> position held <rt> وزير الداخليه <e>
+Prediction: </s>ar_AR<bor> الشيخ ثامر علي صباح السالم الصباح<per> وزير الداخليه<concept> position held<rt> وزير الداخليه<e></s><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction: الشيخ ثامر علي صباح السالم الصباح | position held | وزير الداخليه | evidence=وزير الداخليه
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 49
+Sentence: تم تعيين الدكتور نايف الرومي محافظا لهيئة تقويم التعليم العام.
+Gold: <bor> نايف الرومي <per> محافظ لهيئة تقويم التعليم العام <concept> position held <rt> تم تعيين الدكتور نايف الرومي محافظا لهيئة تقويم التعليم العام <e>
+Prediction: </s>ar_AR<bor> نايف الرومي<per> محافظا لهيئة تقويم التعليم العام<concept> position held<rt> تم تعيين الدكتور نايف الرومي محافظا لهيئة تقويم التعليم العام<e></s>
+Parsed prediction: نايف الرومي | position held | محافظا لهيئة تقويم التعليم العام | evidence=تم تعيين الدكتور نايف الرومي محافظا لهيئة تقويم التعليم العام
+Matches: subject=True, object=False, relation=True, evidence=True
+
+ID: 50
+Sentence: الحميدي السبيعي نائب سابق في مجلس الأمة الكويتي.
+Gold: <bor> الحميدي السبيعي <per> نائب سابق في مجلس الأمة الكويتي <concept> position held <rt> نائب سابق في مجلس الأمة الكويتي <e>
+Prediction: </s>ar_AR<bor> الحميدي السبيعي<per> نائب سابق في مجلس الأمة<concept> position held<rt> نائب سابق في مجلس الأمة الكويتي<e></s><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction: الحميدي السبيعي | position held | نائب سابق في مجلس الأمة | evidence=نائب سابق في مجلس الأمة الكويتي
+Matches: subject=True, object=True, relation=True, evidence=True
+
+ID: 52
+Sentence: انتخب محمد رفيع ضمن هذا المجلس.
+Gold: <bor> محمد رفيع <per> عضو في المجلس <concept> position held <rt> انتخب محمد رفيع ضمن هذا المجلس <e>
+Prediction: </s>ar_AR<bor> محمد رفيع<per> position held<rt> انتخب محمد رفيع ضمن هذا المجلس<e></s><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction:  | محمد رفيع<per> position held |  | evidence=انتخب محمد رفيع ضمن هذا المجلس
+Matches: subject=False, object=False, relation=False, evidence=True
+
+ID: 53
+Sentence: يوسف المطيري المتحدث باسم وزاره الشوون الاجتماعيه.
+Gold: <bor> يوسف المطيري <per> المتحدث باسم وزاره الشوون الاجتماعيه <concept> position held <rt> المتحدث باسم وزاره الشوون الاجتماعيه <e>
+Prediction: </s>ar_AR<bor> يوسف المطيري المتحدث باسم وزاره الشوون الاجتماعيه<per> position held<rt> المتحدث باسم وزاره الشوون الاجتماعيه<e></s><pad><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction:  | يوسف المطيري المتحدث باسم وزاره الشوون الاجتماعيه<per> position held |  | evidence=المتحدث باسم وزاره الشوون الاجتماعيه
+Matches: subject=False, object=False, relation=False, evidence=True
+
+ID: 58
+Sentence: تم تعيين محمد ابطيحان الدويهيس وزيرا للتخطيط.
+Gold: <bor> محمد ابطيحان الدويهيس <per> وزير التخطيط <concept> position held <rt> تم تعيين محمد ابطيحان الدويهيس وزيرا للتخطيط <e>
+Prediction: </s>ar_AR<bor> محمد ابطيحان الدويهيس<per> وزيرا للتخطيط<concept> position held<rt> تعيين محمد ابطيحان الدويهيس وزيرا للتخطيط<e></s>
+Parsed prediction: محمد ابطيحان الدويهيس | position held | وزيرا للتخطيط | evidence=تعيين محمد ابطيحان الدويهيس وزيرا للتخطيط
+Matches: subject=True, object=False, relation=True, evidence=True

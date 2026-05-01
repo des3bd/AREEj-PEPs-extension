@@ -1,0 +1,130 @@
+==============================
+AREEj BASELINE EVALUATION
+==============================
+
+Input: data\final\pep_areej_baseline_predictions.csv
+Output: data\final\pep_areej_baseline_evaluated.csv
+Total rows: 197
+
+Metrics
+-------
+total_rows: 197
+subject_match: 0.7310
+object_match: 0.6599
+relation_match: 0.1827
+evidence_exact_or_contains_match: 0.7107
+evidence_partial_match_overlap_0_50: 0.4569
+full_triple_match: 0.1624
+full_relation_with_evidence_match: 0.0812
+
+Relation predictions distribution
+---------------------------------
+occupation: 64
+position held: 36
+country of citizenship: 31
+(empty): 23
+place of birth: 6
+child: 4
+member of political party: 2
+country: 2
+located in the administrative territorial entity: 2
+سعود محمد راشد بطي الشويعر<per> child: 1
+facet of: 1
+عايض علوش الخميشي العازمي<per> مجلس الأمة<media> member of: 1
+العازمي<per> مجلس الأمة<media> occupation: 1
+military rank: 1
+جراح المطيري<per> occupation: 1
+عوده عوده الرويعي<per> office held by head of the organization: 1
+الدكتور نايف الرومي<per> محافظا لهيئة تقويم التعليم العام<unk> position held: 1
+الحميدي السبيعي<per> مجلس الأمة الكويتي<media> position held: 1
+سعد الخراز<per> وزير الشؤون الجديد<media> position held: 1
+نايب عبدالله<unk> حشر عايد البرغش<concept> parent taxon: 1
+عبدالله متعب<per> مجلس الأمة الكويتي<media> member of: 1
+يوسف المطيري<per> المتحدث باسم وزاره الشوون<unk> position held: 1
+2020<time> 2020<date> point in time: 1
+يوسف خالد المخلد المطيري<per> مجلس الأمة الكويتي<media> position held: 1
+employer: 1
+بدر ضاحي العجيل<per> مجلس الأمة الكويتي<media> position held: 1
+مزيد عويس هادي الديحاني<per> occupant: 1
+محمد مروي الهديه<per> مجلس الأمة<media> position held: 1
+مبارك براك سالم حطاب الهيفي<unk> member of sports team: 1
+military branch: 1
+1981<time> 1981<date> point in time: 1
+راشد سلمان محمد الهبيده العازمي<per> مجلس امه<media> position held: 1
+ethnic group: 1
+مشعان مجبل<per> مجلس الأمة الكويتي<media> position held: 1
+محمد الشمري القائم بالأعمال بالإنابة<unk> position held: 1
+2012<time> 2012<date> start time: 1
+
+Sample wrong predictions
+------------------------
+
+ID: 1
+Sentence: مبارك حمود سعدون الطشه نائب في مجلس الأمة الكويتي.
+Gold: <bor> مبارك حمود سعدون الطشه <per> نائب في مجلس الأمة الكويتي <concept> position held <rt> نائب في مجلس الأمة الكويتي <e>
+Prediction: </s>ar_AR<bor> حمود سعدون<per> الكويتي<loc> country of citizenship<rt> الكويتي<e></s>
+Parsed prediction: حمود سعدون | country of citizenship | الكويتي | evidence=الكويتي
+Matches: subject=True, object=True, relation=False, evidence_partial=False
+
+ID: 2
+Sentence: معصومة صالح محمد المبارك سياسية.
+Gold: <bor> معصومة صالح محمد المبارك <per> سياسية <concept> position held <rt> سياسية <e>
+Prediction: </s>ar_AR<bor> معصومة صالح محمد المبارك<per> سياسية<concept> occupation<rt> سياسية<e></s><pad><pad><pad>
+Parsed prediction: معصومة صالح محمد المبارك | occupation | سياسية | evidence=سياسية
+Matches: subject=True, object=True, relation=False, evidence_partial=True
+
+ID: 3
+Sentence: منصور الشيخ موسى المزيدي عضو المجلس التاسيسي الكويتي.
+Gold: <bor> منصور الشيخ موسا المزيدي <per> عضو المجلس التاسيسي الكويتي <concept> position held <rt> عضو المجلس التاسيسي الكويتي <e>
+Prediction: </s>ar_AR<bor> موسى المزيدي<per> الكويتي<loc> country of citizenship<rt> الكويتي<e></s><pad>
+Parsed prediction: موسى المزيدي | country of citizenship | الكويتي | evidence=الكويتي
+Matches: subject=False, object=True, relation=False, evidence_partial=False
+
+ID: 5
+Sentence: مبارك محمد كنيفذ مرزوق الوعلان المطيري سياسي.
+Gold: <bor> مبارك محمد كنيفذ مرزوق الوعلان المطيري <per> سياسي <concept> position held <rt> سياسي <e>
+Prediction: </s>ar_AR<bor> مرزوق الوعلان المطيري<per> سياسي<concept> occupation<rt> سياسي<e></s><pad><pad><pad><pad><pad><pad>
+Parsed prediction: مرزوق الوعلان المطيري | occupation | سياسي | evidence=سياسي
+Matches: subject=True, object=True, relation=False, evidence_partial=True
+
+ID: 6
+Sentence: سعود محمد راشد بطي الشويعر هو أحد النواب الجدد الذين دخلوا المجلس.
+Gold: <bor> سعود محمد راشد بطي الشويعر <per> نائب <concept> position held <rt> هو أحد النواب <e>
+Prediction: </s>ar_AR<bor> سعود محمد راشد بطي الشويعر<per> child<rt> none<e></s><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction:  | سعود محمد راشد بطي الشويعر<per> child |  | evidence=none
+Matches: subject=False, object=False, relation=False, evidence_partial=False
+
+ID: 7
+Sentence: النايب عبدالله حشر عايد البرغش.
+Gold: <bor> عبدالله حشر عايد البرغش <per> النايب <concept> position held <rt> النايب عبدالله حشر عايد البرغش <e>
+Prediction: </s>ar_AR<bor> نايب عبدالله<unk> حشر عايد البرغش<concept> parent taxon<rt> حشر<e></s><pad><pad>
+Parsed prediction:  | نايب عبدالله<unk> حشر عايد البرغش<concept> parent taxon |  | evidence=حشر
+Matches: subject=False, object=False, relation=False, evidence_partial=False
+
+ID: 10
+Sentence: حمود عبدالله الرقبه هو وزير اسبق.
+Gold: <bor> حمود عبدالله الرقبه <per> وزير اسبق <concept> position held <rt> هو وزير اسبق <e>
+Prediction: </s>ar_AR<bor> حمود عبدالله الرقبه<per> وزير<concept> occupation<rt> هو<e></s><pad><pad>
+Parsed prediction: حمود عبدالله الرقبه | occupation | وزير | evidence=هو
+Matches: subject=True, object=True, relation=False, evidence_partial=False
+
+ID: 11
+Sentence: محمد ضيف الله القحص العنزي سياسي.
+Gold: <bor> محمد ضيف الله القحص العنزي <per> سياسي <concept> position held <rt> سياسي <e>
+Prediction: </s>ar_AR<bor> محمد ضيف الله القحص<per> سياسي<concept> occupation<rt> سياسي<e></s><pad><pad>
+Parsed prediction: محمد ضيف الله القحص | occupation | سياسي | evidence=سياسي
+Matches: subject=True, object=True, relation=False, evidence_partial=True
+
+ID: 12
+Sentence: يوسف الوزان سياسي.
+Gold: <bor> يوسف الوزان <per> سياسي <concept> position held <rt> سياسي <e>
+Prediction: </s>ar_AR<bor> يوسف الوزان<per> سياسي<concept> occupation<rt> سياسي<e></s><pad><pad><pad><pad><pad>
+Parsed prediction: يوسف الوزان | occupation | سياسي | evidence=سياسي
+Matches: subject=True, object=True, relation=False, evidence_partial=True
+
+ID: 14
+Sentence: حسين براك الدوسري سياسي.
+Gold: <bor> حسين براك الدوسري <per> سياسي <concept> position held <rt> سياسي <e>
+Prediction: </s>ar_AR<bor> حسين براك الدوسري<per> سياسي<concept> occupation<rt> سياسي<e></s><pad><pad><pad><pad><pad><pad><pad>
+Parsed prediction: حسين براك الدوسري | occupation | سياسي | evidence=سياسي
+Matches: subject=True, object=True, relation=False, evidence_partial=True
