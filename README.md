@@ -1,59 +1,124 @@
-# Extending AREEj for Specialized Arabic PEP-Relation Extraction
+# Extending AREEj for Arabic PEP Relation Extraction
 
-This repository contains the implementation files for a preliminary extension of AREEj to specialized Arabic PEP-related relation extraction.
+This project extends **AREEj**, an Arabic evidence-aware relation extraction model, to a specialized **Politically Exposed Person (PEP)** relation extraction task.
 
-## Project Description
-
-The project evaluates whether AREEj can be applied without fine-tuning to a smaller Arabic PEP-relation schema. The target relations include:
-
-- person -> holds_position -> office
-- office -> belongs_to -> government/international organization
-- person -> member_of / heads / serves_in -> state body
-
-
-## Project Structure
+The target relation is:
 
 ```text
-data/
-  draft_pep_test_dataset_50.csv
-
-code/
-  run_areej_inference.py
-  evaluate_predictions.py
-
-results/
-  areej_predictions.csv
-  preliminary_results.csv
+person → position_held → office/role
 ```
 
-## How to Run
+Example:
 
-### Prerequisites
+```text
+Sentence:
+مبارك حمود سعدون الطشه نائب في مجلس الأمة الكويتي.
 
-- Python 3.8 or higher
-- An internet connection (to download the AREEj model from Hugging Face on first run)
-- A GPU is optional but recommended for faster inference
+Target output:
+<bor> مبارك حمود سعدون الطشه <per> نائب في مجلس الأمة الكويتي <concept> position held <rt> نائب في مجلس الأمة الكويتي <e>
+```
 
-### 1. Install Dependencies
+---
 
-From the repository root, install the required packages:
+## Project Overview
+
+The original AREEj model was trained on broad Arabic relation extraction data. This project tests whether AREEj can be adapted to a narrower PEP-related task.
+
+
+---
+
+
+## Dataset
+
+The original collection contained **1,414 JSON files**. After filtering, classification, annotation, and manual cleaning, the final dataset contained **197 relation instances**.
+
+Each final row contains:
+
+```text
+id
+sentence
+subject
+relation
+object
+evidence
+target_output
+split
+```
+
+The relation label used in this project is:
+
+```text
+position_held
+```
+
+The `target_output` column follows the AREEj-style linearized format:
+
+```text
+<bor> subject <per> object <concept> position held <rt> evidence <e>
+```
+
+---
+
+## Requirements
+
+Install the required packages:
 
 ```bash
-pip install -r requirments.txt
+pip install pandas torch transformers tqdm sentencepiece accelerate scikit-learn google-genai pydantic
 ```
 
-### 2. Run Inference
+The project uses the Hugging Face model:
 
-This script loads the AREEj model, runs it on the test dataset, and saves the raw predictions to `results/areej_predictions.csv`.
-
-```bash
-python code/run_areej_inference.py
+```text
+U4RASD/AREEj
 ```
 
-### 3. Evaluate Predictions
+Gemini API was used during dataset annotation. If rerunning the Gemini scripts, set your API key as an environment variable:
 
-After inference completes, run the evaluation script to compute relation and evidence accuracy. Results are saved to `results/preliminary_results.csv`.
-
-```bash
-python code/evaluate_predictions.py
+```powershell
+$env:GEMINI_API_KEY="your_api_key_here"
 ```
+
+---
+
+
+## Baseline Experiment
+
+
+Baseline test results:
+
+| Metric | Score |
+|---|---:|
+| Subject match | 0.7667 |
+| Object match | 0.7000 |
+| Relation match | 0.4333 |
+| Evidence exact/contains match | 0.7667 |
+
+---
+
+## Fine-Tuning
+
+
+Fine-tuned test results:
+
+| Metric | Score |
+|---|---:|
+| Subject match | 0.8000 |
+| Object match | 0.7000 |
+| Relation match | 0.8333 |
+| Evidence exact/contains match | 0.8667 |
+
+---
+
+## Results Summary
+
+| Metric | Baseline | Fine-tuned |
+|---|---:|---:|
+| Subject match | 0.7667 | 0.8000 |
+| Object match | 0.7000 | 0.7000 |
+| Relation match | 0.4333 | 0.8333 |
+| Evidence exact/contains match | 0.7667 | 0.8667 |
+
+
+---
+
